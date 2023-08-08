@@ -19,7 +19,7 @@ router.post('/',async(req, res, next)=> {
     subjet: 'contacto web boniambientaciones',
     html: Nombre +"    "+ Fecha + "se contacto a traves de la pagina web y quiere más info a este correo:"+Email
    } //cierra var obj
-  var trasport= nodemailer.createTransport({
+  var transport= nodemailer.createTransport({
     host:process.env.SMTP_HOST,
     port:process.env.SMTP_PORT,
     auth: {
