@@ -12,27 +12,29 @@
     <div id="Eventos" class="col-md-5 offset-md-2 py-3 scroll_section">
         <h2>Eventos</h2>
         <ul class="lista-eventos">
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="images/GyL_182.jpg">eventos
-                    bodas 1</a></li>
-            <li><a href="#"><img src="images/GyL_182.jpg">eventos bodas 2</a></li>
-            <li><a href="#"><img src="images/GyL_182.jpg">eventos bodas 3</a></li>
+            {{#each novedades}}
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="exampleModal{{id}}"><img src="images/GyL_182.jpg">{{titulo}} </a></li>
+            {{/each}}        
+        
         </ul>
     </div><!-- cierra eventos -->
     <!-- inicio modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{#each novedades}}
+    <div class="modal fade" id="exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel">nuestas bodas 1</h2>
+                    <h2 class="modal-title fs-5" id="exampleModalLabel">{{titulo}}</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h3>Hacemos realidad tu sueño</h3>
-                    <p>Bodas soñadas</p>
+                    <h3>{{subtitulo}}</h3>
+                    <p>{{cuerpo}}</p>
                 </div>
             </div>
         </div>
     </div>
+    {{/each}}
     <!-- fin modal -->
     <div>
         CONTANOS TU EXPERIENCIA

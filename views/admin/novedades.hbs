@@ -2,12 +2,64 @@
   {{!--fila 1--}}
   <div class="row">
     <div class="col">
-        <p style="float:right;">
-            <span>Hola {{usuario}}!</span>
-            <a href="/admin/login/logout/"class= "btn btn-danger">Cerrar sesión <i class="fas
+      <p style="float:right;">
+        <span>Hola {{usuario}}!</span>
+        <a href="/admin/login/logout/" class="btn btn-danger">Cerrar sesión <i class="fas
             fa-sign-out-alt"></i></a>
-        </p>
+      </p>
     </div>
   </div>
   {{!--fin fila 1--}}
+  {{!--inicia fila 2--}}
+  <div class="row">
+    <div class="col-7" style="margin-top:-9px;">
+      <h2>Listado de novedades</h2>
+    </div>
+    <div class="col-5 text-right">
+      <a href="" class="btn btn-success"><i class="fas fa-plus"></i>
+        Nuevo</a>
+    </div>
+  </div>
+  {{!--fin fila 2--}}
+  {{!--inicia fila 3--}}
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each novedades}}
+          <tr>
+
+            <th scope="row">{{id}}1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">{{id}}2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">{{id}}3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+        {{/each }}
+      </table>
+
+
+    </div>
+
+  </div>
+  {{!--fin fila 3--}}
 </div> {{!--fin container--}}
