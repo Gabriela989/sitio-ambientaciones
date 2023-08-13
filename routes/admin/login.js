@@ -16,12 +16,13 @@ router.get('/', function(req, res, next) {
    });
 router.post('/',async(req, res, next)=> {
     try{
+        console.log(req.body);
         var usuario= req.body.usuario;
         var password = req.body.password;
         var data = await
         usuariosModel.getUserAndPassword(usuario,password);
         if(data !=undefined) {
-            req.session.id_usuario = data.id;// id> nombre de la columna
+            req.session.id_usuario = data.id;// id> nombre de la columna bd
             req.session.nombre = data.usuario;
             res.redirect('/admin/novedades');
         } else {
@@ -33,5 +34,5 @@ router.post('/',async(req, res, next)=> {
     }catch (error){
         console.log(error);
     }
-})
+}); //cierra el post
   module.exports = router;

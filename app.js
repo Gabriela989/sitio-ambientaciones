@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-  secret:fg5932alp3h699mhroñj,
+  secret:'fg5932alp3h699mhroñj',
   resave:false,
   saveUninitialized: true
 }))
@@ -34,7 +34,7 @@ secured = async (req, res, next) => {
     console.log (req, session.id_usuario);
     if (req, session.id_usuario) {
       next();
-    }else {
+    } else {
       res.redirect('/admin/login')
     }
   } catch (error) {
