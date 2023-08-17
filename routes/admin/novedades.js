@@ -17,14 +17,14 @@ router.get('/', async function (req, res, next) {
 
 /* para eliminar una novedad */
 router.get('/eliminar/:id', async (req,res,next)=>{
-    const id =req.params.id;//2
+    const id =req.params.id;
     await novedadesModel.deleteNovedadesById(id);
     res.redirect('/admin/novedades')
 
 }); // cierra get de eliminar 
 /*aca vemos vista de agregar.hbs> get*/
-router.get('/agregar', function ( req,res,next){
-    res.render('admin/agregar',{ //agregar.hbs (dentro del admin)
+router.get('/agregar',( req,res,next)=> {
+    res.render ('admin/agregar',{ //agregar.hbs (dentro del admin)
         layout: 'admin/layout'
 
     })//cierra render
@@ -38,7 +38,7 @@ router.post ('/agregar', async (req, res, next) => {
             await novedadesModel.insertNovedad(req.body);
             res.redirect ('/admin/novedades')
         } else {
-            res.render ('/admin/agregar',{
+            res.render ('admin/agregar',{
                 layout: 'admin/layout',
                 error: true,
                 message: 'todos los campos son requeridos'
