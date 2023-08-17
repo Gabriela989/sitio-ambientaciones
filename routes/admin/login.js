@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
    /*para destruir variables de session*/
    router.get('/logout', function (req, res, next){
-    req.session.destroy(); //destruir
+    req.session.destroy(); //destruir la session de usuario y pass
     res.render('admin/login', {
         layout: 'admin/layout'
     });
@@ -26,7 +26,7 @@ router.post('/',async(req, res, next)=> {
             req.session.nombre = data.usuario;
             res.redirect('/admin/novedades');
         } else {
-            res.render('/admin/login',{
+            res.render('admin/login',{
                 layout: 'admin/layout',
                 error: true
             });

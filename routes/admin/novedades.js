@@ -23,7 +23,7 @@ router.get('/eliminar/:id', async (req,res,next)=>{
 
 }); // cierra get de eliminar 
 /*aca vemos vista de agregar.hbs> get*/
-router.get('/agregar',( req,res,next)=>{
+router.get('/agregar', function ( req,res,next){
     res.render('admin/agregar',{ //agregar.hbs (dentro del admin)
         layout: 'admin/layout'
 
