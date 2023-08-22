@@ -39,7 +39,14 @@ async function modificarNovedadById(obj, id) {
                 throw error;
         }
 } // cierra modi >update
+async function buscarNovedades(busqueda) {
+        var query ="select * from novedades where titulo like? OR subtitulo like? Or cuerpo like?";
+        var rows = await pool.query(query,[ '%' + busqueda + '%', '%' + busqueda +
+         '%' , '%' + busqueda + '%' ]);
+         return rows;
+                        
+}
 
 
 module.exports = { getNovedades, deleteNovedadesById, insertNovedad, getNovedadesById, 
-        modificarNovedadById  }
+        modificarNovedadById, buscarNovedades  }

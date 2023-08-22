@@ -13,7 +13,7 @@
         <ul class="lista-eventos">
             {{#each novedades}}
             <li>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#Modal{{id}}"><img src="images/GyL_182.jpg">{{titulo}} </a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#Modal{{id}}"><img src="{{imagen}}">{{titulo}} </a>
             </li>
             {{/each}}        
         
@@ -26,9 +26,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title fs-5" id="exampleModalLabel">{{titulo}}</h2>
-                    <button type="button" class="btn-close" data-bs-dismis="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <img src="{{imagen}}">
                     <h3>{{subtitulo}}</h3>
                     <p>{{cuerpo}}</p>
                 </div>
@@ -168,7 +169,7 @@
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </form>
-        <p>{{Messagee}}</p>
+        <p>{{Message}}</p>
 
 
     </div><!-- cierra div con id contactanos->
