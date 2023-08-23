@@ -48,7 +48,7 @@ router.get('/', async function (req, res, next) {
 /* para eliminar una novedad */
 router.get('/eliminar/:id', async (req,res,next)=>{
     const id =req.params.id;
-    let novedad = await novedadesModel.getNovedadById(id);
+    let novedad = await novedadesModel.getNovedadesById(id);
     if (novedad.img_id) {
         await (destroy (novedad.img_id));
     }
