@@ -23,7 +23,7 @@ async function insertNovedad(obj) {
 }//cierra insert
 
 /* para modificar que me traiga una sola novedad por id*/
-async function getNovedadesById(id){
+async function getNovedadById(id){
     
         var query ="select * from novedades where id-?";
         var rows = await pool.query(query,[id]);
@@ -48,5 +48,5 @@ async function buscarNovedades(busqueda) {
 }
 
 
-module.exports = { getNovedades, deleteNovedadesById, insertNovedad, getNovedadesById, 
+module.exports = { getNovedades, deleteNovedadesById, insertNovedad, getNovedadById, 
         modificarNovedadById, buscarNovedades  }

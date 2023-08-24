@@ -47,8 +47,8 @@ router.get('/', async function (req, res, next) {
 
 /* para eliminar una novedad */
 router.get('/eliminar/:id', async (req,res,next)=>{
-    const id =req.params.id;
-    let novedad = await novedadesModel.getNovedadesById(id);
+    var id =req.params.id;
+    let novedad = await novedadesModel.getNovedadById(id);
     if (novedad.img_id) {
         await (destroy (novedad.img_id));
     }
@@ -59,15 +59,15 @@ router.get('/eliminar/:id', async (req,res,next)=>{
 
 }); // cierra get de eliminar 
 /*aca vemos vista de agregar.hbs> get*/
-router.get('/agregar',( req,res,next)=> {
-    res.render ('admin/agregar',{ //agregar.hbs (dentro del admin)
+router.get('/agregar', function ( req,res,next) {
+    res.render('admin/agregar',{ //agregar.hbs (dentro del admin)
         layout: 'admin/layout'
 
-    })//cierra render
-});//cierra get
+    });//cierra render
+});//cierra get 
 /* insertar la novedad > guarde en la BD y lo muestre en el listado*/
 
-router.post ('/agregar', async (req, res, next) => {
+router.post('/agregar', async (req, res, next) => {
     try {
         var img_id ='';
         if (req.files && Object.keys(req.files).length> 0) {
@@ -77,7 +77,7 @@ router.post ('/agregar', async (req, res, next) => {
         //console.log(req.body)
         if (req.body.titulo!= "" && req.body.subtitulo !="" && req.body.cuerpo !=""){
             await novedadesModel.insertNovedad({
-                ...req.body,  //spread titulo,sub y cuerpo
+                ...req.body,  //spread titulo,subt y cuerpo
                 img_id
             });
             res.redirect ('/admin/novedades')
@@ -100,13 +100,13 @@ router.post ('/agregar', async (req, res, next) => {
 
 router.get('/modificar/:id', async (req, res, next)=> {
     var id = req.params.id;
-    var novedad = await novedadesModel.getNovedadesById(id);
+    var novedad = await novedadesModel.getNovedadById(id);
     res.render('admin/modificar',{
         layout: 'admin/layout',
         novedad
     });
 }); //cierro get modificar
-/* metodo post - info ue viene del formulario > actualiza */
+/* metodo post - info que viene del formulario > actualiza*/
 
 router.post('/modificar', async (req, res, next)=> {
     try{
@@ -132,7 +132,7 @@ router.post('/modificar', async (req, res, next)=> {
             cuerpo: req.body.cuerpo,
             img_id
         }
-        console.log(obj) //para ver si trae los datos
+        //console.log(obj) //para ver si trae los datos
         console.log(req.body.id); //para ver si trae id
         await novedadesModel.modificarNovedadById (obj, req.body.id);
         res.redirect ('/admin/novedades');
